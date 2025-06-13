@@ -43,7 +43,7 @@ module Alchemy
       end
 
       def page_path_with_language_prefix
-        @language.default? ? page_path : language_path + page_path
+        @language.default? ? page_path : "#{language_path}/#{@page.urlname}"
       end
 
       def page_path_with_leading_slash
