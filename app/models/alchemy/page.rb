@@ -319,8 +319,8 @@ module Alchemy
     # = The url_path for this page
     #
     # @see Alchemy::Page::UrlPath#call
-    def url_path
-      self.class.url_path_class.new(self).call
+    def url_path(omit_root_path: false)
+      self.class.url_path_class.new(self, omit_root_path: omit_root_path).call
     end
 
     # The page's view partial is dependent from its page layout
