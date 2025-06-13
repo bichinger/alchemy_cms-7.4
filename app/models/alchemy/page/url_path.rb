@@ -20,10 +20,11 @@ module Alchemy
     #     link_to page.url
     #
     class UrlPath
-      def initialize(page)
+      def initialize(page, omit_root_path: false)
         @page = page
         @language = @page.language
         @site = @language.site
+        @omit_root_path = omit_root_path
       end
 
       def call
@@ -59,7 +60,7 @@ module Alchemy
       end
 
       def root_path
-        Engine.routes.url_helpers.root_path
+        @omit_root_path ? "/" : Engine.routes.url_helpers.root_path
       end
     end
   end
